@@ -1,29 +1,26 @@
 package Shop.Sale;
 
-import Shop.Product;
-import Shop.ShopAssortment;
+import Shop.ShopBase.PurchaseItem;
 
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by employee on 3/4/16.
  */
 public class GiftSale implements Sale {
-    private static Map<Product, Product> salableProducts = new HashMap<Product, Product>();
+    private List<PurchaseItem> promotionalItems;
+    private PurchaseItem giftProduct;
 
-    public GiftSale() {
-        salableProducts.put(ShopAssortment.productList.get(0), new Product("Mars", "0"));
+    public GiftSale(List<PurchaseItem> promotionalProducts, PurchaseItem giftProduct) {
+        this.promotionalItems = new ArrayList<PurchaseItem>();
+        this.promotionalItems.addAll(promotionalProducts);
+        this.giftProduct = giftProduct;
     }
-        //TODO do not use those convensions
-    public Product applySale(List<Product> _products) {
-        for (Product pr : _products) {
-            if (salableProducts.containsKey(pr)) {
-                return salableProducts.get(pr);
-            }
-        }
-        return null;
+
+    public void applySale(List<PurchaseItem> products) {
+        if(products.containsAll(promotionalItems))
+            products.add(giftProduct);
     }
 
     @Override

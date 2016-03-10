@@ -1,6 +1,7 @@
 package Shop.Sale;
 
-import Shop.Product;
+import Shop.ShopBase.Product;
+import Shop.ShopBase.PurchaseItem;
 
 import java.util.List;
 
@@ -8,5 +9,5 @@ import java.util.List;
  * Created by employee on 3/4/16.
  */
 public interface Sale {
-    Product applySale(List<Product> products);
+    void applySale(List<PurchaseItem> purchaseItems);
 }

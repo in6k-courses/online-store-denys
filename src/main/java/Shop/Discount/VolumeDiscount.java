@@ -9,10 +9,6 @@ public class VolumeDiscount implements Discount {
     private int levelOfVolumeDiscount;
     private double valueDiscount;
 
-    public VolumeDiscount(double _valueDiscount) {
-        this.valueDiscount = _valueDiscount;
-    }
-
     public VolumeDiscount(double _valueDiscount, int _levelOfVolumeDiscount) {
         this.valueDiscount = _valueDiscount;
         this.levelOfVolumeDiscount = _levelOfVolumeDiscount;

@@ -1,9 +1,10 @@
 package Shop;
 
 import Shop.Discount.Discount;
-import Shop.Sale.GiftSale;
+import Shop.Discount.NoDiscount;
+import Shop.Sale.NoSale;
 import Shop.Sale.Sale;
-import Shop.Sale.MatchSale;
+import Shop.ShopBase.PurchaseItem;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -13,121 +14,54 @@ import java.util.List;
  * Created by employee on 3/4/16.
  */
 public class ShoppingCart {
-    private List<Product> products = new ArrayList<Product>();
-    private List<Discount> discounts = new ArrayList<Discount>();
-    private List<Sale> sales = new ArrayList<Sale>();
-    private BigDecimal totalCost = BigDecimal.ZERO;
-    private BigDecimal totalCostWithoutDiscounts = BigDecimal.ZERO;
-    private BigDecimal totalValueFormDiscounts = BigDecimal.ZERO;
-    private BigDecimal totalDiscountFromProducts = BigDecimal.ZERO;
+    private List<PurchaseItem> purchaseItems;
+    private Discount discount;
+    private Sale sale;
+    private BigDecimal totalPrice;
 
-    //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-    public ShoppingCart(List<Product> selectedProducts) {
+    public ShoppingCart() {
+        purchaseItems = new ArrayList<PurchaseItem>();
+        sale = new NoSale();
+        discount = new NoDiscount();
+        totalPrice = BigDecimal.ZERO;
+    }
 
-        for (Product item : selectedProducts) {
-            products.add(new Product(item.getName(), item.getCost()));
+    public void addPurchaseItem(PurchaseItem pi) {
+        purchaseItems.add(pi);
+    }
+
+    public void setDiscount(Discount discount) {
+        this.discount = discount;
+    }
+
+    public void setSale(Sale sale) {
+        this.sale = sale;
+    }
+
+    public BigDecimal getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void calculateTotalPrice() {
+        totalPrice = BigDecimal.ZERO;
+        for (PurchaseItem pi : purchaseItems) {
+            totalPrice = totalPrice.add(pi.getPrice().multiply(pi.getAmount()));
         }
     }
 
-    //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-    private void calculateTotalCostWithoutDiscounts() {
-        totalCostWithoutDiscounts = BigDecimal.ZERO;
-        for (Product product : products) {
-            totalCostWithoutDiscounts = totalCost.add(product.getCost());
-        }
+    public void applySale() {
+        sale.applySale(purchaseItems);
     }
 
-    private void calculateTotalDiscountFromProducts() {
-        totalValueFormDiscounts = BigDecimal.ZERO;
-        for (Product product : products) {
-            totalDiscountFromProducts = totalDiscountFromProducts.add(product.getDiscountValue());
-        }
+    public void applyDiscount() {
+        totalPrice = totalPrice.subtract(discount.getCalculatedDiscount(totalPrice));
     }
 
-    private BigDecimal calculateTotalDiscounts() {
-        return totalValueFormDiscounts.add(totalDiscountFromProducts);
+    public void addSale(Sale sale) {
+        this.sale = sale;
     }
 
-    private void calculateTotalCost() {
-        totalCost = totalCostWithoutDiscounts.subtract(calculateTotalDiscounts());
-    }
-
-    public void applyDiscounts() {
-        totalValueFormDiscounts = BigDecimal.ZERO;
-        for (Discount _disc : discounts) {
-            totalValueFormDiscounts = totalValueFormDiscounts.add(_disc.getCalculatedDiscount(totalCost));
-        }
-    }
-
-    public void applySales() {
-        for (Sale _sale : sales) {
-            if (_sale.applySale(products) != null)
-                products.add(_sale.applySale(products));
-        }
-    }
-    //- - - - - - - - - boring GETERS AND SETERS- - - - - - - - - - - - -
-
-    public void refreshCartCosts() {
-        calculateTotalCostWithoutDiscounts();
-        calculateTotalDiscountFromProducts();
-        calculateTotalCost();
-    }
-
-    public BigDecimal getTotalCost() {
-
-        return totalCost;
-    }
-
-    public BigDecimal getTotalCostWithoutDiscounts() {
-        return totalCostWithoutDiscounts;
-    }
-
-    public BigDecimal getTotalValueFormDiscounts() {
-        return totalValueFormDiscounts;
-    }
-
-    public BigDecimal getTotalDiscount() {
-        return totalValueFormDiscounts.add(totalDiscountFromProducts);
-    }
-
-    public List<Product> getProducts() {
-        return this.products;
-    }
-
-    public BigDecimal getTotalValueFormDiscount() {
-        return totalValueFormDiscounts;
-    }
-
-    public void addSale(Sale saleBehavior) {
-        sales.add(saleBehavior);
-    }
-
-    public void addProduct(Product _product) {
-        products.add(_product);
-    }
-
-    public void addDiscount(Discount _discount) {
-        discounts.add(_discount);
-    }
-
-
-    public List<Sale> getSalesList() {
-        return sales;
-    }
-
-    public double getTotalDiscountFromProducts() {
-        return totalDiscountFromProducts.doubleValue();
-    }
-
-    public void removeProduct(Product _product) {
-        products.remove(_product);
-    }
-
-    public void removeSale(Sale saleBehavior) {
-        sales.remove(saleBehavior);
-    }
-
-    public void removeDiscount(Discount _discount) {
-        discounts.remove(_discount);
+    public void addDiscount(Discount discount) {
+        this.discount = discount;
     }
 }
