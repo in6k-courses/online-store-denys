@@ -20,19 +20,19 @@ public class MatchSaleTest {
         List<PurchaseItem> purchaseItems = new ArrayList<PurchaseItem>();
         List<PurchaseItem> matchItems = new ArrayList<PurchaseItem>();
 
-        Product cola = new Product("Cola", "10");
+        Product cola = new Product("Cola","drinks", "10");
         PurchaseItem colaPI = new PurchaseItem(cola, new BigDecimal(1));
         purchaseItems.add(colaPI);
 
-        Product fanta = new Product("Fanta", "8");
+        Product fanta = new Product("Fanta","drinks", "8");
         PurchaseItem fantaPI = new PurchaseItem(fanta, new BigDecimal(2));
         purchaseItems.add(fantaPI);
 
 
-        Product sprite = new Product("Sprite", "8");
+        Product sprite = new Product("Sprite","drinks", "8");
         purchaseItems.add(new PurchaseItem(sprite, new BigDecimal(1)));
 
-        Product pen = new Product("Pen", "2");
+        Product pen = new Product("Pen","stationery", "2");
         purchaseItems.add(new PurchaseItem(pen, new BigDecimal(1)));
 
         matchItems.add(colaPI);

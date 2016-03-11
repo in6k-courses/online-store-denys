@@ -24,11 +24,13 @@
         <processorPath useClasspath="true" />
         <module name="Shop" />
         <module name="Shop_v2" />
+        <module name="Shop_v5" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="Shop" target="1.5" />
       <module name="Shop_v2" target="1.5" />
+      <module name="Shop_v5" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>

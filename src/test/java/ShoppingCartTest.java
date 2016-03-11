@@ -19,13 +19,13 @@ public class ShoppingCartTest {
 
     @Test
     public void testGetTotalPriceWithoutEverything() {
-        Product cola = new Product("Cola", "10");
+        Product cola = new Product("Cola", "drinks", "10");
         shoppingCart.addPurchaseItem(new PurchaseItem(cola, new BigDecimal(1)));
 
-        Product fanta = new Product("Fanta", "8");
+        Product fanta = new Product("Fanta", "drinks", "8");
         shoppingCart.addPurchaseItem(new PurchaseItem(fanta, new BigDecimal(2)));
 
-        Product sprite = new Product("Sprite", "8");
+        Product sprite = new Product("Sprite", "drinks", "8");
         shoppingCart.addPurchaseItem(new PurchaseItem(sprite, new BigDecimal(1)));
 
         shoppingCart.calculateTotalPrice();
@@ -35,13 +35,13 @@ public class ShoppingCartTest {
 
     @Test
     public void testGetTotalPriceWithConstantDiscount() {
-        Product cola = new Product("Cola", "10");
-        shoppingCart.addPurchaseItem(new PurchaseItem(cola, new BigDecimal( 1)));
+        Product cola = new Product("Cola", "drinks", "10");
+        shoppingCart.addPurchaseItem(new PurchaseItem(cola, new BigDecimal(1)));
 
-        Product fanta = new Product("Fanta", "8");
+        Product fanta = new Product("Fanta", "drinks", "8");
         shoppingCart.addPurchaseItem(new PurchaseItem(fanta, new BigDecimal(2)));
 
-        Product sprite = new Product("Sprite", "8");
+        Product sprite = new Product("Sprite", "drinks", "8");
         shoppingCart.addPurchaseItem(new PurchaseItem(sprite, new BigDecimal(1)));
 
         shoppingCart.calculateTotalPrice();
