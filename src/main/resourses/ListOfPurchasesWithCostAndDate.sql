@@ -1,0 +1,1 @@
+#select order_id, (select count(price)), date
