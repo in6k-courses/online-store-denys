@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="SqlDialectMappings">
-    <file url="file://$PROJECT_DIR$/src/main/resorces/deletetestInput.sql" dialect="MySQL" />
-    <file url="file://$PROJECT_DIR$/src/main/resorces/testInput.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/src/main/resourses/ItemsSortedByCategoryAndName.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/src/main/resourses/ListOfPurchasesWithCostAndDate.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/src/main/resourses/TopThreePurchasesDuringPeriod.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/src/main/resourses/TopThreePurchasesDuringPeriodByCategory.sql" dialect="MySQL" />
   </component>
 </project>
