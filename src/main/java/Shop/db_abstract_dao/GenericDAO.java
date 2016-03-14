@@ -1,4 +1,4 @@
-package Shop.db;
+package Shop.db_abstract_dao;
 
 import java.sql.SQLException;
 import java.util.List;

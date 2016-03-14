@@ -1,4 +1,4 @@
-package Shop.db;
+package Shop.db_abstract_dao;
 
 import Shop.CustomExceptions.SQLDataBaseException;
 
@@ -11,10 +11,10 @@ import java.util.List;
 /**
  * Created by employee on 3/14/16.
  */
-public abstract class AbstractJDBCDao<T, PK> implements GenericDAO<T, PK> {
+public abstract class AbstractJDBCDAO<T, PK> implements GenericDAO<T, PK> {
     private Connection connection;
 
-    AbstractJDBCDao(Connection connection) {
+    public AbstractJDBCDAO(Connection connection) {
         this.connection = connection;
     }
 
@@ -79,7 +79,7 @@ public abstract class AbstractJDBCDao<T, PK> implements GenericDAO<T, PK> {
         } catch (Exception e) {
             throw new SQLDataBaseException("Exception: Persist to DB failure");
         }
-        sql = getSelectQuery() + "WHERE id = last_isert_id()";
+        sql = getSelectQuery() + "WHERE id = last_insert_id()";
         try {
             PreparedStatement statement = connection.prepareStatement(sql);
             ResultSet rs = statement.executeQuery();
