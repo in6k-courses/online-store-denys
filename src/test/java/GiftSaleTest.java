@@ -30,7 +30,7 @@ public class GiftSaleTest {
         PurchaseItem spritePI = new PurchaseItem(sprite, new BigDecimal(1));
         purchaseItems.add(spritePI);
 
-        Product gift = new Product("Gift", 0);
+        Product gift = new Product("Gift", BigDecimal.ZERO);
         PurchaseItem giftPI = new PurchaseItem(gift, new BigDecimal(1));
 
         promotionalItems.add(spritePI);
