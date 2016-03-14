@@ -29,7 +29,7 @@ public class MySQLDAOFactory implements DAOFactory {
         return DriverManager.getConnection(url, user, password);
     }
 
-    public ProductDAO getProductDAO(Connection connection){
+    public IProductDAO getProductDAO(Connection connection){
         return new MySQLProductDAO(connection);
     }
 }

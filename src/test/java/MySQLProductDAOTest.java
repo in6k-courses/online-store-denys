@@ -5,7 +5,7 @@
 import Shop.ShopBase.Product;
 import Shop.db.DAOFactory;
 import Shop.db.MySQLDAOFactory;
-import Shop.db.ProductDAO;
+import Shop.db.IProductDAO;
 import org.junit.Ignore;
 import org.junit.Test;
 
@@ -15,7 +15,6 @@ import java.sql.SQLException;
 import java.util.List;
 
 import static org.junit.Assert.*;
-import static org.hamcrest.CoreMatchers.*;
 
 public class MySQLProductDAOTest {
 
@@ -25,7 +24,7 @@ public class MySQLProductDAOTest {
         List<Product> productList = null;
         try{
             Connection con = daoFactory.getConnection();
-            ProductDAO dao  = daoFactory.getProductDAO(con);
+            IProductDAO dao  = daoFactory.getProductDAO(con);
             productList = dao.getAll();
         }
         catch (Exception e){
@@ -42,7 +41,7 @@ public class MySQLProductDAOTest {
         Product product = null;
         try{
             Connection con = daoFactory.getConnection();
-            ProductDAO dao = daoFactory.getProductDAO(con);
+            IProductDAO dao = daoFactory.getProductDAO(con);
             product = dao.read(1);
         }
         catch (Exception e){
@@ -62,7 +61,7 @@ public class MySQLProductDAOTest {
         product.setCost(BigDecimal.ZERO);
         try{
             Connection con = daoFactory.getConnection();
-            ProductDAO dao  = daoFactory.getProductDAO(con);
+            IProductDAO dao  = daoFactory.getProductDAO(con);
             dao.update(product);
         }
         catch(SQLException e){
@@ -81,7 +80,7 @@ public class MySQLProductDAOTest {
         product.setCost(BigDecimal.ZERO);
         try{
             Connection con = daoFactory.getConnection();
-            ProductDAO dao  = daoFactory.getProductDAO(con);
+            IProductDAO dao  = daoFactory.getProductDAO(con);
             dao.delete(product);
         }
         catch(SQLException e){

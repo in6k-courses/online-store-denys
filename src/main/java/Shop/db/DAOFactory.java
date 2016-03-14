@@ -6,5 +6,5 @@ import java.sql.SQLException;
 public interface DAOFactory {
     Connection getConnection() throws SQLException;
 
-    ProductDAO getProductDAO(Connection connection);
+    IProductDAO getProductDAO(Connection connection);
 }

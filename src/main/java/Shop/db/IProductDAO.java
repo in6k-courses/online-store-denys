@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * Created by employee on 3/14/16.
  */
-public interface ProductDAO {
+public interface IProductDAO {
     Product create(Product product);
 
     Product read(int key) throws SQLException;

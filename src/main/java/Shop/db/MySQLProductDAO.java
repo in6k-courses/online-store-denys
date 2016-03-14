@@ -11,7 +11,7 @@ import java.util.List;
  * Created by employee on 3/14/16.
  */
 //TODO write exception handlers
-public class MySQLProductDAO implements ProductDAO{
+public class MySQLProductDAO implements IProductDAO {
     private final Connection connection;
 
     public MySQLProductDAO(Connection connection){
