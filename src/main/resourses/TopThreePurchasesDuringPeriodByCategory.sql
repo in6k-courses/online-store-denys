@@ -1,4 +1,3 @@
-#TODO check out architecture of DB
 SELECT
   products.name AS "Top three products",
   categories.name AS "Categories"
