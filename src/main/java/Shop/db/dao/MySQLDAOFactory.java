@@ -1,12 +1,15 @@
 package Shop.db.dao;
 
 import Shop.CustomExceptions.PersistException;
-import Shop.db.dao.DAOFactory;
-import Shop.db.dao.GenericDAO;
+import Shop.ShopBase.Category;
+import Shop.ShopBase.Product;
+import Shop.db.MySQLCategoryDAO;
+import Shop.db.MySQLProductDAO;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -26,8 +29,21 @@ public class MySQLDAOFactory implements DAOFactory {
             Class.forName(driver);
         } catch (ClassNotFoundException e){
             e.printStackTrace();
+            System.out.println("in msqldaofactory!");
         }
-        //TODO add DAOs for classes to Map
+
+        creators = new HashMap<Class, DAOCreator>();
+        creators.put(Product.class, new DAOCreator() {
+            public GenericDAO create(Object o) {
+                return new MySQLProductDAO(connection);
+            }
+        });
+        creators.put(Category.class, new DAOCreator() {
+            public GenericDAO create(Object o) {
+                return new MySQLCategoryDAO(connection);
+            }
+        });
+
     }
 
     public Connection getContext() throws PersistException {
@@ -35,12 +51,12 @@ public class MySQLDAOFactory implements DAOFactory {
         try {
             connection = DriverManager.getConnection(url, user, password);
         } catch (SQLException e) {
-            throw new PersistException(e);
+
         }
         return connection;
     }
 
-    public GenericDAO getDAO(Object o, Class classDAO) throws PersistException {
+    public GenericDAO getDAO(Class classDAO) throws PersistException {
         DAOCreator creator = creators.get(classDAO);
         if(creator == null) {
             throw new PersistException("DAO object for " + classDAO + "is not exist");

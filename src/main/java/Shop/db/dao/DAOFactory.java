@@ -1,7 +1,6 @@
 package Shop.db.dao;
 
 import Shop.CustomExceptions.PersistException;
-import Shop.db.ProductDAO;
 
 public interface DAOFactory<Context> {
 
@@ -11,5 +10,5 @@ public interface DAOFactory<Context> {
 
     Context getContext() throws PersistException;
 
-    GenericDAO getDAO(Context context, Class classDAO) throws PersistException;
+    GenericDAO getDAO(Class classDAO) throws PersistException;
 }
