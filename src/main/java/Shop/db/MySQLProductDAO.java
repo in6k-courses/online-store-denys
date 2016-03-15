@@ -1,6 +1,5 @@
 package Shop.db;
 
-import Shop.CustomExceptions.SQLDataBaseException;
 import Shop.ShopBase.Product;
 
 import java.sql.*;

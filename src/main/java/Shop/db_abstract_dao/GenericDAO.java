@@ -1,22 +1,24 @@
 package Shop.db_abstract_dao;
 
+import Shop.CustomExceptions.PersistException;
+
 import java.sql.SQLException;
 import java.util.List;
 
 /**
  * Created by employee on 3/14/16.
  */
-public interface GenericDAO<T, PK> {
-    T create() throws SQLException;
+public interface GenericDAO<T> {
+    T create() throws PersistException;
 
-    T persist(T object) throws SQLException;
+    T persist(T object) throws PersistException;
 
-    T getByPK(int key) throws SQLException;
+    T getByPK(int key) throws PersistException;
 
-    void upgrade(T object) throws SQLException;
+    void update(T object) throws PersistException;
 
-    void delete(T object) throws SQLException;
+    void delete(T object) throws PersistException;
 
-    List<T> getAll() throws SQLException;
+    List<T> getAll() throws PersistException;
 
 }
