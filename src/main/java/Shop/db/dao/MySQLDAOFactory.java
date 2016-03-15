@@ -12,10 +12,11 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
+
 /**
  * Created by employee on 3/14/16.
  */
-public class MySQLDAOFactory implements DAOFactory {
+public class MySQLDAOFactory implements DAOFactory<Connection> {
 
     private String user = "root";
     private String password = "root";
@@ -29,7 +30,7 @@ public class MySQLDAOFactory implements DAOFactory {
             Class.forName(driver);
         } catch (ClassNotFoundException e){
             e.printStackTrace();
-            System.out.println("in msqldaofactory!");
+            System.out.println("no driver!");
         }
 
         creators = new HashMap<Class, DAOCreator>();
@@ -47,16 +48,15 @@ public class MySQLDAOFactory implements DAOFactory {
     }
 
     public Connection getContext() throws PersistException {
-        Connection connection = null;
         try {
             connection = DriverManager.getConnection(url, user, password);
         } catch (SQLException e) {
-
+            System.out.println("no connection");
         }
         return connection;
     }
 
-    public GenericDAO getDAO(Class classDAO) throws PersistException {
+    public GenericDAO getDAO(Connection connection, Class classDAO) throws PersistException {
         DAOCreator creator = creators.get(classDAO);
         if(creator == null) {
             throw new PersistException("DAO object for " + classDAO + "is not exist");

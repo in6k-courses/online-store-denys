@@ -6,7 +6,7 @@
 
     <servlet>
         <servlet-name>MainPageServlet</servlet-name>
-        <servlet-class>shop.com.MainPageServlet</servlet-class>
+        <servlet-class>Shop.com.MainPageServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>

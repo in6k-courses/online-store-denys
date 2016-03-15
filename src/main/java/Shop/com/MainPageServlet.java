@@ -1,4 +1,4 @@
-package shop.com;
+package Shop.com;
 
 import Shop.CustomExceptions.PersistException;
 import Shop.ShopBase.Category;
@@ -15,21 +15,25 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.List;
 
 /**
  * Created by employee on 3/15/16.
  */
 public class MainPageServlet extends HttpServlet {
+    Connection connection;
+    DAOFactory<Connection> factory = new MySQLDAOFactory();
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         PrintWriter out = resp.getWriter();
-        MySQLDAOFactory mySQLDAOFactory = new MySQLDAOFactory();
+
         try {
-            mySQLDAOFactory.getContext();
-            GenericDAO<Category> p = mySQLDAOFactory.getDAO(Category.class);
-            out.println(p.getAll());
+            connection = factory.getContext();
+            List<Category> c = factory.getDAO(connection, Category.class).getAll();
+            out.println(c);
         } catch (PersistException e){
             out.print(e.getMessage());
         }

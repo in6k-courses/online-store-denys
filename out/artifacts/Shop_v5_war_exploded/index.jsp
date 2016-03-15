@@ -1,5 +1,14 @@
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="Shop.db.dao.MySQLDAOFactory" %>
+<%@ page import="Shop.ShopBase.Category" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.sql.Connection" %>
+<%@ page import="Shop.db.dao.DAOFactory" %>
+<%  DAOFactory<Connection> factory = new MySQLDAOFactory(); %>
+<%  Connection connection = factory.getContext(); %>
+<%  List<Category> categories = factory.getDAO(connection, Category.class).getAll(); %>
+
 <html>
 <head>
     <title>Title</title>
@@ -9,8 +18,14 @@
 <div>
     <h1 class="alert-info text-center">Categories</h1>
 </div>
-    <form action="MainPageServlet">
-        <input type="submit" class="button-bar">
+    <form action="">
+        <%
+            for (Category c:
+                 categories) {
+                <%= c.getName() %>
+            }
+
+    %>
     </form>
 </body>
 </html>
