@@ -7,41 +7,13 @@
       <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/Shop_v5_war_exploded/WEB-INF/classes/Shop/db/MySQLDAOFactory.class" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/Shop_v5_war_exploded/WEB-INF/classes/Shop/db/ProductDAO.class" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/Shop_v5_war_exploded/WEB-INF/classes/shop/com/MainPageServlet.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/shop/com/MainPageServlet.java" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/Shop/CustomExceptions/SQLDataBaseException.class" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/Shop/db/DAOFactory.class" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/Shop/db/MySQLDAOFactory.class" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/Shop/db/ProductDAO.class" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/shop/com/MainPageServlet.class" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/MySQLProductDAOTest.class" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/Shop_v5_war_exploded/WEB-INF/classes/Shop/Main.class" afterPath="$PROJECT_DIR$/out/artifacts/Shop_v5_war_exploded/WEB-INF/classes/Shop/Main.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/Shop_v5_war_exploded/WEB-INF/classes/Shop/db/dao/DAOFactory.class" afterPath="$PROJECT_DIR$/out/artifacts/Shop_v5_war_exploded/WEB-INF/classes/Shop/db/dao/DAOFactory.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/Shop_v5_war_exploded/WEB-INF/classes/Shop/db/dao/MySQLDAOFactory$1.class" afterPath="$PROJECT_DIR$/out/artifacts/Shop_v5_war_exploded/WEB-INF/classes/Shop/db/dao/MySQLDAOFactory$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/Shop_v5_war_exploded/WEB-INF/classes/Shop/db/dao/MySQLDAOFactory$2.class" afterPath="$PROJECT_DIR$/out/artifacts/Shop_v5_war_exploded/WEB-INF/classes/Shop/db/dao/MySQLDAOFactory$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/Shop_v5_war_exploded/WEB-INF/classes/Shop/db/dao/MySQLDAOFactory.class" afterPath="$PROJECT_DIR$/out/artifacts/Shop_v5_war_exploded/WEB-INF/classes/Shop/db/dao/MySQLDAOFactory.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/Shop-1.0-SNAPSHOT.jar" afterPath="$PROJECT_DIR$/target/Shop-1.0-SNAPSHOT.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/Shop/Main.class" afterPath="$PROJECT_DIR$/target/classes/Shop/Main.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/Shop/db/dao/DAOFactory.class" afterPath="$PROJECT_DIR$/target/classes/Shop/db/dao/DAOFactory.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/Shop/db/dao/MySQLDAOFactory$1.class" afterPath="$PROJECT_DIR$/target/classes/Shop/db/dao/MySQLDAOFactory$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/Shop/db/dao/MySQLDAOFactory$2.class" afterPath="$PROJECT_DIR$/target/classes/Shop/db/dao/MySQLDAOFactory$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/Shop/db/dao/MySQLDAOFactory.class" afterPath="$PROJECT_DIR$/target/classes/Shop/db/dao/MySQLDAOFactory.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/Shop_v5_war_exploded.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/Shop_v5_war_exploded.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/Shop_v5_war_exploded/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/out/artifacts/Shop_v5_war_exploded/WEB-INF/web.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Shop/Main.java" afterPath="$PROJECT_DIR$/src/main/java/Shop/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Shop/db/dao/DAOFactory.java" afterPath="$PROJECT_DIR$/src/main/java/Shop/db/dao/DAOFactory.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Shop/db/dao/MySQLDAOFactory.java" afterPath="$PROJECT_DIR$/src/main/java/Shop/db/dao/MySQLDAOFactory.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/surefire-reports/ConstantDiscountTest.txt" afterPath="$PROJECT_DIR$/target/surefire-reports/ConstantDiscountTest.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/surefire-reports/GiftSaleTest.txt" afterPath="$PROJECT_DIR$/target/surefire-reports/GiftSaleTest.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/surefire-reports/MatchSaleTest.txt" afterPath="$PROJECT_DIR$/target/surefire-reports/MatchSaleTest.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-ConstantDiscountTest.xml" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-ConstantDiscountTest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-GiftSaleTest.xml" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-GiftSaleTest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-MatchSaleTest.xml" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-MatchSaleTest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-ShoppingCartTest.xml" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-ShoppingCartTest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-VolumeDiscountTest.xml" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-VolumeDiscountTest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/surefire-reports/VolumeDiscountTest.txt" afterPath="$PROJECT_DIR$/target/surefire-reports/VolumeDiscountTest.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/web/WEB-INF/web.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/index.jsp" afterPath="$PROJECT_DIR$/web/index.jsp" />
     </list>
     <ignored path="Shop.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -106,8 +78,8 @@
       <file leaf-file-name="index.jsp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web/index.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5645161">
-              <caret line="21" column="8" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="8" />
+            <state vertical-scroll-proportion="0.9782609">
+              <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -1216,6 +1188,9 @@
     </recent_temporary>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="14641cae-b923-4070-b01d-edea8f1af6b5" name="Default" comment="" />
@@ -1225,16 +1200,16 @@
       <workItem from="1458030466603" duration="1917000" />
       <workItem from="1458035458008" duration="7278000" />
       <workItem from="1458044026108" duration="163000" />
-      <workItem from="1458047127989" duration="6729000" />
+      <workItem from="1458047127989" duration="6894000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16087000" />
+    <option name="totallyTimeSpent" value="16252000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1245,8 +1220,8 @@
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32976446" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32967034" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32929516" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.58920705" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32929516" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.58920705" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24969475" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -1614,8 +1589,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/index.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5645161">
-          <caret line="21" column="8" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="8" />
+        <state vertical-scroll-proportion="0.9782609">
+          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
           <folding />
         </state>
       </provider>
