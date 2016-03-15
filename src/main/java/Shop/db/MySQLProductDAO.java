@@ -1,95 +1,85 @@
 package Shop.db;
 
-import Shop.CustomExceptions.SQLDataBaseException;
+import Shop.CustomExceptions.PersistException;
 import Shop.ShopBase.Product;
+import Shop.db.dao.AbstractJDBCDAO;
 
-import java.sql.*;
-import java.util.ArrayList;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
- * Created by employee on 3/14/16.
+ * Created by Денис on 15.03.2016.
  */
-//TODO write exception handlers
-public class MySQLProductDAO implements IProductDAO {
-    private final Connection connection;
+public class MySQLProductDAO extends AbstractJDBCDAO<Product> {
 
-    public MySQLProductDAO(Connection connection){
-        this.connection = connection;
+    public MySQLProductDAO(Connection connection){ super(connection);}
+
+    @Override
+    public String getSelectQuery() {
+        return "SELECT id, name, cost, category_id FROM shop.products";
     }
 
-    public Product create(Product product) {
-        if(product != null){
-
-        }
-        String sql = "INSERT INTO shop.products ";
-        return null;
+    @Override
+    public String getCreateQuery() {
+        return "INSERT INTO shop.products (name, cost, category_id) VALUES (?, ?, ?)";
     }
 
-    public Product read(int key) throws SQLException{
-        String sql = "SELECT * FROM shop.products WHERE id = ?;";
-        PreparedStatement prstm = connection.prepareStatement(sql);
-        prstm.setInt(1, key);
-        ResultSet rs = prstm.executeQuery();
-        Product pr = new Product();
-
-        rs.next();
-        pr.setId(rs.getInt("id"));
-        pr.setName(rs.getString("name"));
-        pr.setCost(rs.getBigDecimal("cost"));
-        pr.setCategory(rs.getInt("category_id"));
-
-        return pr;
+    @Override
+    public String getDeleteQuery() {
+        return "DELETE FROM shop.products WHERE id = ?";
     }
 
-    public void update(Product product) throws SQLException{
-        String sql = "UPDATE shop.products SET category_id = ?, name = ?, cost = ? WHERE id = ?;";
-        try {
-            PreparedStatement prstm = connection.prepareStatement(sql);
+    @Override
+    public String getUpdateQuery() {
+        return "UPDATE shop.products SET name = ? , cost = ? , category_id = ? WHERE id = ?";
+    }
 
-            prstm.setInt(1, product.getCategory());
-            prstm.setString(2, product.getName());
-            prstm.setBigDecimal(3, product.getCost());
-            prstm.setInt(4, product.getId());
-
-            int count = prstm.executeUpdate();
-            if(count != 1) {
-                throw new SQLDataBaseException("On update modify not 1 record: " + count);
+    @Override
+    protected List<Product> parseResultSet(ResultSet rs) throws PersistException {
+        LinkedList<Product> result = new LinkedList<Product>();
+        try{
+            while(rs.next()){
+                Product p = new Product();
+                p.setId(rs.getInt("id"));
+                p.setName(rs.getString("name"));
+                p.setCost(rs.getBigDecimal("cost"));
+                p.setCategory(rs.getInt("category_id"));
+                result.add(p);
             }
-        } catch (SQLException e){
-            throw new SQLException();
+        } catch (Exception e){
+            throw new PersistException(e);
+        }
+        return result;
+    }
+
+    @Override
+    protected void prepareStatementForInsert(PreparedStatement statement, Product object) throws PersistException{
+        try{
+            statement.setString(1, object.getName());
+            statement.setBigDecimal(2, object.getCost());
+            statement.setInt(3, object.getCategory());
+        } catch (Exception e){
+            throw new PersistException(e);
         }
     }
 
-    public void delete(Product product) throws SQLException{
-        String sql = "DELETE FROM shop.products WHERE id = ?";
-        try {
-            PreparedStatement prstm = connection.prepareStatement(sql);
-            prstm.setInt(1, product.getId());
-            int count = prstm.executeUpdate();
-            if(count != 1){
-                throw new SQLDataBaseException("On delete modify not 1 record: " + count);
-            }
-        } catch (SQLException e){
-            throw new SQLException();
+    @Override
+    protected void prepareStatementForUpdate(PreparedStatement statement, Product object) throws PersistException{
+        try{
+            statement.setString(1, object.getName());
+            statement.setBigDecimal(2, object.getCost());
+            statement.setInt(3, object.getCategory());
+            statement.setInt(4, object.getCategory());
+        } catch (Exception e){
+            throw new PersistException(e);
         }
     }
 
-    public List<Product> getAll() throws SQLException{
-        String sql = "SELECT * FROM shop.products";
-        PreparedStatement prstm = connection.prepareStatement(sql);
-        ResultSet rs = prstm.executeQuery();
-        List<Product> productList = new ArrayList<Product>();
-        while(rs.next()){
-            Product pr = new Product();
-            pr.setId(rs.getInt("id"));
-            //TODO write trully pr.setCategory()
-            pr.setCategory(rs.getInt("category_id"));
-            //
-            pr.setCost(rs.getBigDecimal("cost"));
-            pr.setName(rs.getString("name"));
-            productList.add(pr);
-        }
-        return productList;
+    public Product create() throws PersistException {
+        Product p = new Product();
+        return persist(p);
     }
 }

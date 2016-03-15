@@ -1,17 +1,16 @@
-package Shop.db_abstract_dao;
+package Shop.db.dao;
 
-import Shop.CustomExceptions.SQLDataBaseException;
+import Shop.CustomExceptions.PersistException;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.List;
 
 /**
  * Created by employee on 3/14/16.
  */
-public abstract class AbstractJDBCDAO<T, PK> implements GenericDAO<T, PK> {
+public abstract class AbstractJDBCDAO<T> implements GenericDAO<T> {
     private Connection connection;
 
     public AbstractJDBCDAO(Connection connection) {
@@ -26,13 +25,13 @@ public abstract class AbstractJDBCDAO<T, PK> implements GenericDAO<T, PK> {
 
     public abstract String getUpdateQuery();
 
-    protected abstract List<T> parseResultSet(ResultSet rs);
+    protected abstract List<T> parseResultSet(ResultSet rs) throws PersistException;
 
-    protected abstract void prepareStatementForInsert(PreparedStatement statement, T object);
+    protected abstract void prepareStatementForInsert(PreparedStatement statement, T object) throws PersistException;
 
-    protected abstract void prepareStatementForUpdate(PreparedStatement statement, T object);
+    protected abstract void prepareStatementForUpdate(PreparedStatement statement, T object) throws PersistException;
 
-    public T getByPK(int key) throws SQLException {
+    public T getByPK(int key) throws PersistException {
         List<T> list;
         String sql = getSelectQuery();
         sql += "WHERE id = ?";
@@ -42,18 +41,18 @@ public abstract class AbstractJDBCDAO<T, PK> implements GenericDAO<T, PK> {
             ResultSet rs = statement.executeQuery();
             list = parseResultSet(rs);
         } catch (Exception e) {
-            throw new SQLDataBaseException("Get by PK exception");
+            throw new PersistException(e);
         }
         if (list == null || list.size() == 0) {
             return null;
         }
         if (list.size() > 1) {
-            throw new SQLDataBaseException("Get by PK exception, more then one row");
+            throw new PersistException("Get by PK exception, more then one row");
         }
         return list.get(1);
     }
 
-    public List<T> getAll() throws SQLException {
+    public List<T> getAll() throws PersistException {
         List<T> list;
         String sql = getSelectQuery();
         try {
@@ -61,12 +60,12 @@ public abstract class AbstractJDBCDAO<T, PK> implements GenericDAO<T, PK> {
             ResultSet rs = statement.executeQuery();
             list = parseResultSet(rs);
         } catch (Exception e) {
-            throw new SQLDataBaseException("Get all exception");
+            throw new PersistException(e);
         }
         return list;
     }
 
-    public T persist(T object) throws SQLException {
+    public T persist(T object) throws PersistException {
         T persistIstance;
         String sql = getCreateQuery();
         try {
@@ -74,10 +73,10 @@ public abstract class AbstractJDBCDAO<T, PK> implements GenericDAO<T, PK> {
             prepareStatementForInsert(statement, object);
             int count = statement.executeUpdate();
             if (count != 1) {
-                throw new SQLDataBaseException("On persist modify not 1 record " + count);
+                throw new PersistException("On persist modify not 1 record " + count);
             }
         } catch (Exception e) {
-            throw new SQLDataBaseException("Exception: Persist to DB failure");
+            throw new PersistException("Exception: Persist to DB failure");
         }
         sql = getSelectQuery() + "WHERE id = last_insert_id()";
         try {
@@ -85,40 +84,40 @@ public abstract class AbstractJDBCDAO<T, PK> implements GenericDAO<T, PK> {
             ResultSet rs = statement.executeQuery();
             List<T> list = parseResultSet(rs);
             if (list == null || list.size() != 1) {
-                throw new SQLDataBaseException("Exception on findByPK");
+                throw new PersistException("Exception on findByPK");
             }
             persistIstance = list.iterator().next();
         } catch (Exception e) {
-            throw new SQLDataBaseException("Exception: Persist to DB failure");
+            throw new PersistException(e);
         }
         return persistIstance;
     }
 
-    public void update(T object) throws SQLException {
+    public void update(T object) throws PersistException {
         String sql = getUpdateQuery();
         try {
             PreparedStatement statement = connection.prepareStatement(sql);
             prepareStatementForUpdate(statement, object);
             int count = statement.executeUpdate();
             if (count != 1) {
-                throw new SQLDataBaseException("On update modify not one record " + count);
+                throw new PersistException("On update modify not one record " + count);
             }
         } catch (Exception e) {
-            throw new SQLDataBaseException("Exception: Update to DB failure");
+            throw new PersistException(e);
         }
     }
 
-    public void delete(T object) throws SQLException {
+    public void delete(T object) throws PersistException {
         String sql = getDeleteQuery();
         try{
             PreparedStatement statement = connection.prepareStatement(sql);
             int count = statement.executeUpdate();
             if(count != 1){
-                throw new SQLDataBaseException("On delete modify not one record: " + count);
+                throw new PersistException("On delete modify not one record: " + count);
             }
             statement.close();
         } catch (Exception e){
-            throw  new SQLDataBaseException("Exception: Delete to DB failure");
+            throw  new PersistException(e);
         }
     }
 }
