@@ -26,14 +26,15 @@ public class MainPageServlet extends HttpServlet {
     Connection connection;
     DAOFactory<Connection> factory = new MySQLDAOFactory();
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         PrintWriter out = resp.getWriter();
 
         try {
             connection = factory.getContext();
-            List<Category> c = factory.getDAO(connection, Category.class).getAll();
-            out.println(c);
+            List<Category> categories = factory.getDAO(connection, Category.class).getAll();
+            for (Category c: categories)
+            out.println(c.getName());
         } catch (PersistException e){
             out.print(e.getMessage());
         }

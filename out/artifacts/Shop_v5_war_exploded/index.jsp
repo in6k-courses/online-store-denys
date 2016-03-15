@@ -1,13 +1,8 @@
-
+<%@ page import="Shop.com.MainPageServlet" %>
+<%@ page import="Shop.com.CategoryPage" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page import="Shop.db.dao.MySQLDAOFactory" %>
-<%@ page import="Shop.ShopBase.Category" %>
-<%@ page import="java.util.List" %>
-<%@ page import="java.sql.Connection" %>
-<%@ page import="Shop.db.dao.DAOFactory" %>
-<%  DAOFactory<Connection> factory = new MySQLDAOFactory(); %>
-<%  Connection connection = factory.getContext(); %>
-<%  List<Category> categories = factory.getDAO(connection, Category.class).getAll(); %>
+
+
 
 <html>
 <head>
@@ -18,14 +13,7 @@
 <div>
     <h1 class="alert-info text-center">Categories</h1>
 </div>
-    <form action="">
-        <%
-            for (Category c:
-                 categories) {
-                <%= c.getName() %>
-            }
+   <%= CategoryPage.getCategoriesList() %>
 
-    %>
-    </form>
 </body>
 </html>

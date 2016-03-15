@@ -17,17 +17,7 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) {
-        Connection connection;
 
-        DAOFactory<Connection> factory = new MySQLDAOFactory();
-
-        try {
-            connection = factory.getContext();
-            List<Category> c = factory.getDAO(connection, Category.class).getAll();
-            System.out.println(c.get(2).getName());
-        } catch (PersistException e){
-            System.out.println(e.getMessage());
-        }
     }
 
 }
