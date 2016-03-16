@@ -34,7 +34,7 @@ public abstract class AbstractJDBCDAO<T> implements GenericDAO<T> {
     public T getByPK(int key) throws PersistException {
         List<T> list;
         String sql = getSelectQuery();
-        sql += "WHERE id = ?";
+        sql += "WHERE id = ? ;";
         try {
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setInt(1, key);
@@ -49,7 +49,7 @@ public abstract class AbstractJDBCDAO<T> implements GenericDAO<T> {
         if (list.size() > 1) {
             throw new PersistException("Get by PK exception, more then one row");
         }
-        return list.get(1);
+        return list.iterator().next();
     }
 
     public List<T> getAll() throws PersistException {

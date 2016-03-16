@@ -82,4 +82,19 @@ public class MySQLProductDAO extends AbstractJDBCDAO<Product> {
         Product p = new Product();
         return persist(p);
     }
+
+    public List<Product> getAllByCategoryID(int key) throws PersistException{
+        List<Product> reuslt = null;
+        try {
+            for(Product pr :getAll()){
+                if (pr.getCategory() == key){
+                    reuslt.add(pr);
+                }
+            }
+        } catch (Exception e){
+            throw new PersistException(e);
+        }
+        return reuslt;
+    }
+
 }

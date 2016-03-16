@@ -19,22 +19,22 @@ public class MySQLCategoryDAO extends AbstractJDBCDAO<Category> {
 
     @Override
     public String getSelectQuery() {
-        return "SELECT id, name FROM shop.categories";
+        return "SELECT id, name FROM shop.categories ";
     }
 
     @Override
     public String getCreateQuery() {
-        return "INSERT INTO shop.categories ( name ) VALUE ( ? )";
+        return "INSERT INTO shop.categories ( name ) VALUE ( ? ) ";
     }
 
     @Override
     public String getDeleteQuery() {
-        return "DELETE FROM shop.categories WHERE id = ?";
+        return "DELETE FROM shop.categories WHERE id = ? ";
     }
 
     @Override
     public String getUpdateQuery() {
-        return "UPDATE shop.categories SET name = ? WHERE id = ?";
+        return "UPDATE shop.categories SET name = ? WHERE id = ? ";
     }
 
     @Override

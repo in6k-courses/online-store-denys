@@ -32,7 +32,7 @@
         <data-type>varchar(30)</data-type>
       </column>
       <column id="12" parent="3" name="cost">
-        <data-type>double(15,5)</data-type>
+        <data-type>double(15,2)</data-type>
       </column>
       <column id="13" parent="3" name="category_id">
         <data-type>int(11)</data-type>
@@ -70,7 +70,7 @@
         <data-type>int(11)</data-type>
       </column>
       <column id="22" parent="5" name="price">
-        <data-type>double(15,5)</data-type>
+        <data-type>double(15,2)</data-type>
       </column>
       <column id="23" parent="5" name="amount">
         <data-type>double(15,5)</data-type>

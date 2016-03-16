@@ -5,12 +5,23 @@
          version="3.1">
 
     <servlet>
-        <servlet-name>MainPageServlet</servlet-name>
-        <servlet-class>Shop.com.MainPageServlet</servlet-class>
+        <servlet-name>AddProduct</servlet-name>
+        <servlet-class>Shop.com.AddProduct</servlet-class>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>MainPageServlet</servlet-name>
-        <url-pattern>/</url-pattern>
+        <servlet-name>AddProduct</servlet-name>
+        <url-pattern>/AddProduct</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>DeleteProduct</servlet-name>
+        <servlet-class>Shop.com.DeleteProduct</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>DeleteProduct</servlet-name>
+        <url-pattern>/DeleteProduct</url-pattern>
+    </servlet-mapping>
+
 </web-app>
