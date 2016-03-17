@@ -30,6 +30,18 @@ public class ShoppingCart {
         purchaseItems.add(pi);
     }
 
+    public void removePurchaseItem(PurchaseItem pi) {
+        purchaseItems.remove(pi);
+    }
+
+    public int getIndexOf(PurchaseItem pi) {
+        return purchaseItems.indexOf(pi);
+    }
+
+    public void addAmountOfPurchaseItem(int purchaseItemIndex, BigDecimal amount){
+        purchaseItems.get(purchaseItemIndex).addAmount(amount);
+    }
+
     public void setDiscount(Discount discount) {
         this.discount = discount;
     }

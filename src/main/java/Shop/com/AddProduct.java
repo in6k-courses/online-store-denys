@@ -21,6 +21,8 @@ import java.util.List;
  * Created by employee on 3/15/16.
  */
 
+//TODO think about changing List<PurchaseItem> to ShoppingCart entity
+
 public class AddProduct extends HttpServlet {
     private DAOFactory<Connection> factory;
     private Connection connection;
@@ -33,9 +35,9 @@ public class AddProduct extends HttpServlet {
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         connectToDB();
         session = req.getSession();
-
         amount = validateAmount(req.getParameter("amount"));
         int product_id = Integer.valueOf(req.getParameter("product_id")) - 1;
+
 
         setPurchaseItems();
 
