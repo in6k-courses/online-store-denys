@@ -1,4 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="Shop.ShopBase.PurchaseItem" %>
+<% Object obj = session.getAttribute("cartSize"); %>
+<% int cartSize = (obj == null ? 0 : Integer.valueOf(obj.toString()));%>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -27,6 +30,11 @@
                     <a href="#">Contact</a>
                 </li>
             </ul>
+            <a href="cart.jsp">
+                <% if (cartSize != 0) { %>
+                <span class="pull-right bg-info glyphicon glyphicon-shopping-cart"> <%= cartSize %> item/s </span>
+                <% } %>
+            </a>
         </div>
     </div>
 </nav>

@@ -3,8 +3,10 @@ package Shop.db.dao;
 import Shop.CustomExceptions.PersistException;
 import Shop.ShopBase.Category;
 import Shop.ShopBase.Product;
+import Shop.User;
 import Shop.db.MySQLCategoryDAO;
 import Shop.db.MySQLProductDAO;
+import Shop.db.MySQLUserDAO;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -44,6 +46,11 @@ public class MySQLDAOFactory implements DAOFactory<Connection> {
                 return new MySQLCategoryDAO(connection);
             }
         });
+        creators.put(User.class, new DAOCreator() {
+            public GenericDAO create(Object o) {
+                return new MySQLUserDAO(connection);
+            }
+        });
 
     }
 
@@ -59,7 +66,7 @@ public class MySQLDAOFactory implements DAOFactory<Connection> {
     public GenericDAO getDAO(Connection connection, Class classDAO) throws PersistException {
         DAOCreator creator = creators.get(classDAO);
         if(creator == null) {
-            throw new PersistException("DAO object for " + classDAO + "is not exist");
+            throw new PersistException("DAO object for " + classDAO + " is not exist");
         }
         return creator.create(connection);
     }

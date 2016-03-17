@@ -46,7 +46,20 @@ public class AddProduct extends HttpServlet {
         addProduct(newPurchaseItem);
 
         session.setAttribute("purchaseItems", purchaseItems);
+        session.setAttribute("cartSize", purchaseItems.size());
         resp.sendRedirect("cart.jsp");
+    }
+
+
+
+    private void connectToDB() {
+        try {
+            factory = new MySQLDAOFactory();
+            connection = factory.getContext();
+            productsBase = factory.getDAO(connection, Product.class).getAll();
+        } catch (Exception e) {
+            System.out.println("connection problem");
+        }
     }
 
     private BigDecimal validateAmount(String amount){
@@ -58,16 +71,6 @@ public class AddProduct extends HttpServlet {
             purchaseItems = new ArrayList<PurchaseItem>();
         } else {
             purchaseItems = (List<PurchaseItem>) session.getAttribute("purchaseItems");
-        }
-    }
-
-    private void connectToDB() {
-        try {
-            factory = new MySQLDAOFactory();
-            connection = factory.getContext();
-            productsBase = factory.getDAO(connection, Product.class).getAll();
-        } catch (Exception e) {
-            System.out.println("connection problem");
         }
     }
 

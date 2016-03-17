@@ -78,7 +78,7 @@ public abstract class AbstractJDBCDAO<T> implements GenericDAO<T> {
         } catch (Exception e) {
             throw new PersistException("Exception: Persist to DB failure");
         }
-        sql = getSelectQuery() + "WHERE id = last_insert_id()";
+        sql = getSelectQuery() + " WHERE id = LAST('id') ;";
         try {
             PreparedStatement statement = connection.prepareStatement(sql);
             ResultSet rs = statement.executeQuery();
@@ -90,7 +90,7 @@ public abstract class AbstractJDBCDAO<T> implements GenericDAO<T> {
         } catch (Exception e) {
             throw new PersistException(e);
         }
-        return persistIstance;
+        return persistIstance=null;
     }
 
     public void update(T object) throws PersistException {

@@ -71,8 +71,7 @@ public class MySQLCategoryDAO extends AbstractJDBCDAO<Category> {
         }
     }
 
-    public Category create() throws PersistException {
-        Category c = new Category();
-        return persist(c);
+    public Category create(Category object) throws PersistException {
+        return persist(object);
     }
 }

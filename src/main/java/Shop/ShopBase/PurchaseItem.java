@@ -10,11 +10,20 @@ public class PurchaseItem {
     private Product product;
     private BigDecimal price;
     private BigDecimal amount;
+    private int ordierId;
 
     public PurchaseItem(Product product, BigDecimal amount) {
         this.product = product;
         this.price = new BigDecimal(BigInteger.ZERO).add(product.getCost());
         this.amount = amount;
+    }
+
+    public int getOrdierId() {
+        return ordierId;
+    }
+
+    public void setOrdierId(int ordierId) {
+        this.ordierId = ordierId;
     }
 
     public BigDecimal getAmount() {

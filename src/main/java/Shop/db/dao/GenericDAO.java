@@ -8,7 +8,7 @@ import java.util.List;
  * Created by employee on 3/14/16.
  */
 public interface GenericDAO<T> {
-    T create() throws PersistException;
+    T create(T object) throws PersistException;
 
     T persist(T object) throws PersistException;
 

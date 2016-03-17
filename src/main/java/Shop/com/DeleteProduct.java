@@ -25,6 +25,7 @@ public class DeleteProduct extends HttpServlet {
         purchaseItems.remove(id);
 
         session.setAttribute("purchaseItems", purchaseItems);
+        session.setAttribute("cartSize", purchaseItems.size());
 
         resp.sendRedirect("cart.jsp");
     }
