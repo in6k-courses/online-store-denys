@@ -14,6 +14,7 @@
         <url-pattern>/AddProduct</url-pattern>
     </servlet-mapping>
 
+
     <servlet>
         <servlet-name>DeleteProduct</servlet-name>
         <servlet-class>Shop.com.DeleteProduct</servlet-class>
@@ -22,6 +23,17 @@
     <servlet-mapping>
         <servlet-name>DeleteProduct</servlet-name>
         <url-pattern>/DeleteProduct</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>ChangeProductAmount</servlet-name>
+        <servlet-class>Shop.com.ChangeProductAmount</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ChangeProductAmount</servlet-name>
+        <url-pattern>/ChangeProductAmount</url-pattern>
     </servlet-mapping>
 
 </web-app>

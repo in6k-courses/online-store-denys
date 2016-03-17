@@ -1,6 +1,7 @@
 package Shop.ShopBase;
 
 import java.math.BigDecimal;
+import java.math.BigInteger;
 
 /**
  * Created by Денис on 10.03.2016.
@@ -12,7 +13,7 @@ public class PurchaseItem {
 
     public PurchaseItem(Product product, BigDecimal amount) {
         this.product = product;
-        this.price = product.getCost();
+        this.price = new BigDecimal(BigInteger.ZERO).add(product.getCost());
         this.amount = amount;
     }
 
@@ -32,6 +33,14 @@ public class PurchaseItem {
         this.price = price;
     }
 
+    public void setAmount(BigDecimal amount) {
+        this.amount = amount;
+    }
+
+    public void addAmount(BigDecimal addAmount){
+        this.amount = this.amount.add(addAmount);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -39,8 +48,6 @@ public class PurchaseItem {
         PurchaseItem purchaseItem = (PurchaseItem) o;
         if (product != null ? !product.equals(purchaseItem.product) : purchaseItem.product != null)
             return false;
-        if(price != null ? !price.equals(purchaseItem.price) : purchaseItem.price != null)
-            return false;
-        return amount != null ? amount.equals(purchaseItem.amount) : purchaseItem.amount == null;
+        return price != null ? price.equals(purchaseItem.price) : purchaseItem.price == null;
     }
 }

@@ -20,11 +20,11 @@ public class DeleteProduct extends HttpServlet {
         HttpSession session = req.getSession();
         int id = Integer.valueOf(req.getParameter("id"));
 
-        List<PurchaseItem> purchaseList = (List<PurchaseItem>) session.getAttribute("purchaseList");
+        List<PurchaseItem> purchaseItems = (List<PurchaseItem>) session.getAttribute("purchaseItems");
 
-        purchaseList.remove(id);
+        purchaseItems.remove(id);
 
-        session.setAttribute("purchaseList", purchaseList);
+        session.setAttribute("purchaseItems", purchaseItems);
 
         resp.sendRedirect("cart.jsp");
     }

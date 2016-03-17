@@ -75,17 +75,19 @@
                 <% for (Product pr : products) { %>
                     <% if (pr.getCategory() == category_id) { %>
                         <div class="col-sm-4 col-lg-4 col-md-4">
-
                             <div class="thumbnail">
                                 <img src="http://placehold.it/320x150" alt="">
                                 <div class="caption">
                                     <h4 class="text-left "> <%= pr.getName()%> </h4>
+
                                     <h5 class="text-left "> <%= pr.getCost()%> </h5>
+
                                     <form action="AddProduct" method="get">
                                         <input type="hidden" name="product_id" value="<%= pr.getId() %>">
                                         <input type="text" name="amount" value="1" class="form-control text-center">
                                         <input type="submit" value="Buy" class="form-control">
                                     </form>
+
                                 </div>
                             </div>
                         </div>
@@ -93,18 +95,7 @@
                 <% } %>
             </div>
         </div>
-
-
-        <hr>
-        <footer>
-            <div class="row">
-                <div class="col-lg-12">
-                    <p class="text-right">Copyright &copy; Online Shop 2016</p>
-                </div>
-            </div>
-        </footer>
     </div>
 </div>
-</body>
-</html>
+<%@ include file="templates/template_footer.jsp"%>
 

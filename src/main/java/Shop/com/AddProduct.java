@@ -22,29 +22,41 @@ import java.util.List;
  */
 
 public class AddProduct extends HttpServlet {
-    DAOFactory<Connection> factory;
-    Connection connection;
-    List<Product> productsBase;
+    private DAOFactory<Connection> factory;
+    private Connection connection;
+    private List<Product> productsBase;
+    private List<PurchaseItem> purchaseItems;
+    private BigDecimal amount;
+    private HttpSession session;
 
     @Override
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         connectToDB();
-        int amount = Integer.valueOf(req.getParameter("amount"));
-        int product_id = Integer.valueOf(req.getParameter("product_id"));
-        List<PurchaseItem> purchaseList;
-        HttpSession session = req.getSession(true);
+        session = req.getSession();
 
-        PrintWriter out = resp.getWriter();
+        amount = validateAmount(req.getParameter("amount"));
+        int product_id = Integer.valueOf(req.getParameter("product_id")) - 1;
 
-        if (session.getAttribute("purchaseList") == null ) {
-            purchaseList = new ArrayList<PurchaseItem>();
-        } else {
-            purchaseList = (List<PurchaseItem>) session.getAttribute("purchaseList");
-        }
-        purchaseList.add(new PurchaseItem(productsBase.get(product_id-1), new BigDecimal(amount)));
-        session.setAttribute("purchaseList", purchaseList);
+        setPurchaseItems();
 
+        PurchaseItem newPurchaseItem = new PurchaseItem(productsBase.get(product_id), amount);
+
+        addProduct(newPurchaseItem);
+
+        session.setAttribute("purchaseItems", purchaseItems);
         resp.sendRedirect("cart.jsp");
+    }
+
+    private BigDecimal validateAmount(String amount){
+        return new BigDecimal(amount).doubleValue() < 0 ? BigDecimal.ZERO : new BigDecimal(amount);
+    }
+
+    private void setPurchaseItems(){
+        if (session.getAttribute("purchaseItems") == null ) {
+            purchaseItems = new ArrayList<PurchaseItem>();
+        } else {
+            purchaseItems = (List<PurchaseItem>) session.getAttribute("purchaseItems");
+        }
     }
 
     private void connectToDB() {
@@ -55,7 +67,17 @@ public class AddProduct extends HttpServlet {
         } catch (Exception e) {
             System.out.println("connection problem");
         }
-
     }
+
+    private void addProduct(PurchaseItem newPurchaseItem){
+        int index = purchaseItems.indexOf(newPurchaseItem);
+        if(index == -1){
+            purchaseItems.add(newPurchaseItem);
+        } else {
+            purchaseItems.get(index).addAmount(amount);
+        }
+    }
+
+
 
 }
