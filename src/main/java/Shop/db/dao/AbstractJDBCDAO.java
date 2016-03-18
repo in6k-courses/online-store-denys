@@ -76,9 +76,9 @@ public abstract class AbstractJDBCDAO<T> implements GenericDAO<T> {
                 throw new PersistException("On persist modify not 1 record " + count);
             }
         } catch (Exception e) {
-            throw new PersistException("Exception: Persist to DB failure");
+            throw new PersistException(e);
         }
-        sql = getSelectQuery() + " WHERE id = LAST('id') ;";
+        sql = getSelectQuery() + " WHERE id = LAST_INSERT_ID() ";
         try {
             PreparedStatement statement = connection.prepareStatement(sql);
             ResultSet rs = statement.executeQuery();
@@ -86,11 +86,11 @@ public abstract class AbstractJDBCDAO<T> implements GenericDAO<T> {
             if (list == null || list.size() != 1) {
                 throw new PersistException("Exception on findByPK");
             }
-            persistIstance = list.iterator().next();
+            persistIstance = list.get(0);
         } catch (Exception e) {
             throw new PersistException(e);
         }
-        return persistIstance=null;
+        return persistIstance;
     }
 
     public void update(T object) throws PersistException {

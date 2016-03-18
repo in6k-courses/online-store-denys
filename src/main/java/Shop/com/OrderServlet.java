@@ -14,8 +14,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.math.BigDecimal;
 import java.sql.Connection;
-import java.sql.SQLException;
+import java.sql.Date;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -29,12 +31,14 @@ public class OrderServlet extends HttpServlet {
     private HttpSession session;
 
     private List<PurchaseItem> purchaseItems;
+    private BigDecimal totalPrice = BigDecimal.ZERO;
 
     private String firstName;
     private String lastName;
     private String telephone;
 
     private User user;
+    private Order order;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -42,16 +46,20 @@ public class OrderServlet extends HttpServlet {
         session = req.getSession();
         purchaseItems = (List<PurchaseItem>) session.getAttribute("purchaseItems");
 
+        calculateTotalPriceOfOrder();
+
         getUserInfoFromREQ(req);
+        try {
+            addUser();
+            addOrder();
+            addPurchaseItems();
+        } catch (PersistException e){
+            resp.sendRedirect("error.jsp");
+        }
 
-        addUser();
+        session.invalidate();
 
-        addOrder();
-
-        addPurchaseItems();
-        ////
-        PrintWriter out = resp.getWriter();
-        out.print("ADDED");
+        resp.sendRedirect("succes.jsp");
     }
 
     private void connectToDB() {
@@ -63,33 +71,37 @@ public class OrderServlet extends HttpServlet {
         }
     }
 
+    private void calculateTotalPriceOfOrder(){
+        for (PurchaseItem pi: purchaseItems) {
+            totalPrice = totalPrice.add(pi.getPrice());
+        }
+    }
+
     private void getUserInfoFromREQ(HttpServletRequest req){
         firstName = req.getParameter("f_name");
         lastName = req.getParameter("l_name");
         telephone = req.getParameter("tel");
     }
 
-    private void addUser(){
+    private void addUser() throws PersistException{
         user = new User(firstName, lastName, telephone);
 
-        try {
-            factory.getDAO(connection, User.class).create(user);
-            user = factory.getDAO(connection, User.class).
-        } catch (PersistException e){
-            System.out.println(e.getCause());
-            System.out.println(e.getMessage());
-        }
+        user = (User) factory.getDAO(connection, User.class).create(user);
     }
 
-    private void addOrder(){
-        Order order = new Order();
-        order.setDate(LocalDateTime.now());
+    private void addOrder() throws PersistException{
+        order = new Order();
         order.setUserId(user.getId());
+        order.setTotalPrice(totalPrice);
+
+        order = (Order) factory.getDAO(connection, Order.class).create(order);
     }
 
-    private void addPurchaseItems(){
+    private void addPurchaseItems() throws PersistException{
         for (PurchaseItem pi: purchaseItems) {
-            factory.getDAO(connection, User.class).create(user);
+            pi.setOrderId(order.getId());
+
+            pi = (PurchaseItem) factory.getDAO(connection, PurchaseItem.class).create(pi);
         }
     }
 }

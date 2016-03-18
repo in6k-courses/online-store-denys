@@ -37,14 +37,23 @@
     </servlet-mapping>
 
     <servlet>
-        <servlet-name>Order</servlet-name>
-        <servlet-class>Shop.com.Order</servlet-class>
+        <servlet-name>OrderServlet</servlet-name>
+        <servlet-class>Shop.com.OrderServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>Order</servlet-name>
-        <url-pattern>/Order</url-pattern>
+        <servlet-name>OrderServlet</servlet-name>
+        <url-pattern>/OrderServlet</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>ChangeStatusToOrder</servlet-name>
+        <servlet-class>Shop.com.ChangeStatusToOrder</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ChangeStatusToOrder</servlet-name>
+        <url-pattern>/ChangeStatusToOrder</url-pattern>
+    </servlet-mapping>
 
 </web-app>

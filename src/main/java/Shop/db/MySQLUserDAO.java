@@ -24,7 +24,7 @@ public class MySQLUserDAO extends AbstractJDBCDAO<User> {
 
     @Override
     public String getCreateQuery() {
-        return "INSERT INTO shop.users (f_name, l_name, tel) VALUES ( ? , ? , ? )";
+        return "INSERT INTO shop.users (f_name, l_name, telephone) VALUES ( ? , ? , ? )";
     }
 
     @Override

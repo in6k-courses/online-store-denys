@@ -55,7 +55,7 @@
 
                                     <form action="AddProduct" method="get">
                                         <input type="hidden" name="product_id" value="<%= pr.getId() %>">
-                                        <input type="text" name="amount" value="1" class="form-control text-center">
+                                        <input type="number" name="amount" value="1" class="form-control text-center" min="1" required>
                                         <input type="submit" value="Buy" class="form-control">
                                     </form>
 

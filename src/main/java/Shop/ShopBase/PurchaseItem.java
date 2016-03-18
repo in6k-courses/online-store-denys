@@ -7,23 +7,45 @@ import java.math.BigInteger;
  * Created by Денис on 10.03.2016.
  */
 public class PurchaseItem {
-    private Product product;
+    private int id;
+    private Product product; //TODO review this field
+    private int product_id; //TODO review this field
     private BigDecimal price;
     private BigDecimal amount;
-    private int ordierId;
+    private int orderId;
 
     public PurchaseItem(Product product, BigDecimal amount) {
         this.product = product;
+        this.product_id = product.getId();
         this.price = new BigDecimal(BigInteger.ZERO).add(product.getCost());
         this.amount = amount;
     }
 
-    public int getOrdierId() {
-        return ordierId;
+    public PurchaseItem(){
     }
 
-    public void setOrdierId(int ordierId) {
-        this.ordierId = ordierId;
+    public int getProduct_id() {
+        return product_id;
+    }
+
+    public void setProduct_id(int product_id) {
+        this.product_id = product_id;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(int orderId) {
+        this.orderId = orderId;
     }
 
     public BigDecimal getAmount() {

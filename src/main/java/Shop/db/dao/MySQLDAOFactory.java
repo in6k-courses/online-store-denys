@@ -1,12 +1,13 @@
 package Shop.db.dao;
 
+import Shop.CompletedOrder;
 import Shop.CustomExceptions.PersistException;
+import Shop.Order;
 import Shop.ShopBase.Category;
 import Shop.ShopBase.Product;
+import Shop.ShopBase.PurchaseItem;
 import Shop.User;
-import Shop.db.MySQLCategoryDAO;
-import Shop.db.MySQLProductDAO;
-import Shop.db.MySQLUserDAO;
+import Shop.db.*;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -51,7 +52,21 @@ public class MySQLDAOFactory implements DAOFactory<Connection> {
                 return new MySQLUserDAO(connection);
             }
         });
-
+        creators.put(Order.class, new DAOCreator() {
+            public GenericDAO create(Object o) {
+                return new MySQLOrderDAO(connection);
+            }
+        });
+        creators.put(PurchaseItem.class, new DAOCreator() {
+            public GenericDAO create(Object o) {
+                return new MySQLPurchaseItemDAO(connection);
+            }
+        });
+        creators.put(CompletedOrder.class, new DAOCreator() {
+            public GenericDAO create(Object o) {
+                return new MySQLCompletedOrderDAO(connection);
+            }
+        });
     }
 
     public Connection getContext() throws PersistException {

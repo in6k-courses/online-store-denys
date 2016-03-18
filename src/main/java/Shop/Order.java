@@ -1,8 +1,9 @@
 package Shop;
 
 import java.math.BigDecimal;
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
-import java.util.Date;
+import java.sql.Date;
 
 /**
  * Created by employee on 3/17/16.
@@ -10,8 +11,8 @@ import java.util.Date;
 public class Order {
     private int id;
     private int userId;
-    private LocalDateTime date;
-    private BigDecimal totalCost;
+    private Timestamp date;
+    private BigDecimal totalPrice;
 
     public int getId() {
         return id;
@@ -29,19 +30,19 @@ public class Order {
         this.userId = userId;
     }
 
-    public LocalDateTime getDate() {
+    public Timestamp getDate() {
         return date;
     }
 
-    public void setDate(LocalDateTime date) {
+    public void setDate(Timestamp date) {
         this.date = date;
     }
 
-    public BigDecimal getTotalCost() {
-        return totalCost;
+    public BigDecimal getTotalPrice() {
+        return totalPrice;
     }
 
-    public void setTotalCost(BigDecimal totalCost) {
-        this.totalCost = totalCost;
+    public void setTotalPrice(BigDecimal totalPrice) {
+        this.totalPrice = totalPrice;
     }
 }
