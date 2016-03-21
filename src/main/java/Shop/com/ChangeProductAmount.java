@@ -22,12 +22,12 @@ public class ChangeProductAmount extends HttpServlet{
     List<PurchaseItem> purchaseItems;
 
     @Override
-    public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         session = req.getSession();
         purchaseItems = (List<PurchaseItem>) session.getAttribute("purchaseItems");
         changingProcut = Integer.valueOf(req.getParameter("product"));
 
-                //TODO rewrite this piece of sh
+                //TODO rewrite this piece of
         if(req.getParameter("up") != null){
             purchaseItems.get(changingProcut).addAmount(BigDecimal.ONE);
         } else if (req.getParameter("down") != null) {

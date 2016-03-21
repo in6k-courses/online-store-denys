@@ -53,7 +53,7 @@
 
                                     <h5 class="text-left "> $ <%= pr.getCost()%> </h5>
 
-                                    <form action="AddProduct" method="get">
+                                    <form action="AddProduct" method="post">
                                         <input type="hidden" name="product_id" value="<%= pr.getId() %>">
                                         <input type="number" name="amount" value="1" class="form-control text-center" min="1" required>
                                         <input type="submit" value="Buy" class="form-control">

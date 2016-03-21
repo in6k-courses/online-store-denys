@@ -41,7 +41,7 @@ public class OrderServlet extends HttpServlet {
     private Order order;
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         connectToDB();
         session = req.getSession();
         purchaseItems = (List<PurchaseItem>) session.getAttribute("purchaseItems");

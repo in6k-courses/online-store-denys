@@ -32,7 +32,7 @@ public class AddProduct extends HttpServlet {
     private HttpSession session;
 
     @Override
-    public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         connectToDB();
         session = req.getSession();
         amount = validateAmount(req.getParameter("amount"));

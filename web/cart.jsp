@@ -43,7 +43,7 @@
                 <div style="margin: 0 auto; width: 70%;">
                     <p class="text-center bg-warning h3"> To order input next information</p>
 
-                    <form action="OrderServlet" method="get">
+                    <form action="OrderServlet" method="post">
                         <div class="form-group">
                             <label for="f_name">First name</label>
                             <input type="text" class="form-control" id="f_name" value="Name" name="f_name">
