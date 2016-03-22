@@ -6,7 +6,7 @@ import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.*;
 
 import Shop.Discount.ConstantDiscount;
-import Shop.ShopBase.Product;
+import Shop.core.entity.Product;
 import Shop.ShopBase.PurchaseItem;
 import Shop.ShoppingCart;
 import org.junit.Test;
@@ -19,13 +19,13 @@ public class ShoppingCartTest {
 
     @Test
     public void testGetTotalPriceWithoutEverything() {
-        Product cola = new Product("Cola", "drinks", "10");
+        Product cola = new Product("Cola", new BigDecimal("10"));
         shoppingCart.addPurchaseItem(new PurchaseItem(cola, new BigDecimal(1)));
 
-        Product fanta = new Product("Fanta", "drinks", "8");
+        Product fanta = new Product("Fanta",new BigDecimal("8"));
         shoppingCart.addPurchaseItem(new PurchaseItem(fanta, new BigDecimal(2)));
 
-        Product sprite = new Product("Sprite", "drinks", "8");
+        Product sprite = new Product("Sprite", new BigDecimal("8"));
         shoppingCart.addPurchaseItem(new PurchaseItem(sprite, new BigDecimal(1)));
 
         shoppingCart.calculateTotalPrice();
@@ -35,13 +35,13 @@ public class ShoppingCartTest {
 
     @Test
     public void testGetTotalPriceWithConstantDiscount() {
-        Product cola = new Product("Cola", "drinks", "10");
+        Product cola = new Product("Cola",new BigDecimal("10"));
         shoppingCart.addPurchaseItem(new PurchaseItem(cola, new BigDecimal(1)));
 
-        Product fanta = new Product("Fanta", "drinks", "8");
+        Product fanta = new Product("Fanta",new BigDecimal("8"));
         shoppingCart.addPurchaseItem(new PurchaseItem(fanta, new BigDecimal(2)));
 
-        Product sprite = new Product("Sprite", "drinks", "8");
+        Product sprite = new Product("Sprite", new BigDecimal("8"));
         shoppingCart.addPurchaseItem(new PurchaseItem(sprite, new BigDecimal(1)));
 
         shoppingCart.calculateTotalPrice();

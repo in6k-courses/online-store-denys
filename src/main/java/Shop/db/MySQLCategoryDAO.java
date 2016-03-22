@@ -1,8 +1,7 @@
 package Shop.db;
 
 import Shop.CustomExceptions.PersistException;
-import Shop.ShopBase.Category;
-import Shop.ShopBase.Product;
+import Shop.core.entity.Category;
 import Shop.db.dao.AbstractJDBCDAO;
 
 import java.sql.Connection;

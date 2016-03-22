@@ -1,6 +1,5 @@
 package Shop.Sale;
 
-import Shop.ShopBase.Product;
 import Shop.ShopBase.PurchaseItem;
 
 import java.math.BigDecimal;

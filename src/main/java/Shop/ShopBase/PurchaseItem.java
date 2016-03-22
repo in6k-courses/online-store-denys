@@ -1,5 +1,7 @@
 package Shop.ShopBase;
 
+import Shop.core.entity.Product;
+
 import java.math.BigDecimal;
 import java.math.BigInteger;
 

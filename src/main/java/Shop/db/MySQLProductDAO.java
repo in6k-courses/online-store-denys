@@ -1,7 +1,7 @@
 package Shop.db;
 
 import Shop.CustomExceptions.PersistException;
-import Shop.ShopBase.Product;
+import Shop.core.entity.Product;
 import Shop.db.dao.AbstractJDBCDAO;
 
 import java.sql.Connection;
@@ -46,7 +46,7 @@ public class MySQLProductDAO extends AbstractJDBCDAO<Product> {
                 p.setId(rs.getInt("id"));
                 p.setName(rs.getString("name"));
                 p.setCost(rs.getBigDecimal("cost"));
-                p.setCategory(rs.getInt("category_id"));
+                //p.setCategory(rs.getInt("category_id"));
                 result.add(p);
             }
         } catch (Exception e){
@@ -60,7 +60,7 @@ public class MySQLProductDAO extends AbstractJDBCDAO<Product> {
         try{
             statement.setString(1, object.getName());
             statement.setBigDecimal(2, object.getCost());
-            statement.setInt(3, object.getCategory());
+            //statement.setInt(3, object.getCategory());
         } catch (Exception e){
             throw new PersistException(e);
         }
@@ -71,7 +71,7 @@ public class MySQLProductDAO extends AbstractJDBCDAO<Product> {
         try{
             statement.setString(1, object.getName());
             statement.setBigDecimal(2, object.getCost());
-            statement.setInt(3, object.getCategory());
+            //statement.setInt(3, object.getCategory());
             statement.setInt(4, object.getId());
         } catch (Exception e){
             throw new PersistException(e);

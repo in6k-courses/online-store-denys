@@ -3,7 +3,7 @@
  */
 import Shop.Sale.MatchSale;
 import Shop.Sale.Sale;
-import Shop.ShopBase.Product;
+import Shop.core.entity.Product;
 import Shop.ShopBase.PurchaseItem;
 import org.junit.Test;
 
@@ -20,19 +20,19 @@ public class MatchSaleTest {
         List<PurchaseItem> purchaseItems = new ArrayList<PurchaseItem>();
         List<PurchaseItem> matchItems = new ArrayList<PurchaseItem>();
 
-        Product cola = new Product("Cola","drinks", "10");
+        Product cola = new Product("Cola", new BigDecimal("10"));
         PurchaseItem colaPI = new PurchaseItem(cola, new BigDecimal(1));
         purchaseItems.add(colaPI);
 
-        Product fanta = new Product("Fanta","drinks", "8");
+        Product fanta = new Product("Fanta",new BigDecimal("8"));
         PurchaseItem fantaPI = new PurchaseItem(fanta, new BigDecimal(2));
         purchaseItems.add(fantaPI);
 
 
-        Product sprite = new Product("Sprite","drinks", "8");
+        Product sprite = new Product("Sprite",new BigDecimal("8"));
         purchaseItems.add(new PurchaseItem(sprite, new BigDecimal(1)));
 
-        Product pen = new Product("Pen","stationery", "2");
+        Product pen = new Product("Pen",new BigDecimal("2"));
         purchaseItems.add(new PurchaseItem(pen, new BigDecimal(1)));
 
         matchItems.add(colaPI);
