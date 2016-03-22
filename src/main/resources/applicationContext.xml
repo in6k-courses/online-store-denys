@@ -9,16 +9,15 @@
              http://www.springframework.org/schema/context
              http://www.springframework.org/schema/context/spring-context-4.0.xsd">
 
+    <context:annotation-config/>
     <context:component-scan base-package="Shop.core.repository"/>
     <context:component-scan base-package="Shop.core.service"/>
-    <context:annotation-config/>
 
-    <!--DB config start-->
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver" />
         <property name="url" value="jdbc:mysql://localhost/shop" />
         <property name="username" value="root" />
-        <property name="password" value="" />
+        <property name="password" value="root" />
     </bean>
 
     <bean id="sessionFactory"
@@ -29,7 +28,7 @@
             <props>
                 <prop key="hibernate.show_sql">true</prop>
                 <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
-                <prop key="hibernate.hbm2ddl.auto">create</prop>
+                <prop key="hibernate.hbm2ddl.auto">validate</prop>
             </props>
         </property>
     </bean>
@@ -40,5 +39,6 @@
     </bean>
 
     <tx:annotation-driven proxy-target-class="true" transaction-manager="transactionManager"/>
+    <!--DB config end-->
 
 </beans>

@@ -31,7 +31,7 @@
                     <a href="#">Contact</a>
                 </li>
             </ul>
-            <a href="../cart.jsp">
+            <a href="cart.jsp"> <!-- //TODO change this -->
                 <% if (cartSize != 0) { %>
                 <span class="pull-right bg-info glyphicon glyphicon-shopping-cart"> <%= cartSize %> item/s </span>
                 <% } %>

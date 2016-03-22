@@ -5,55 +5,31 @@
          version="3.1">
 
     <servlet>
-        <servlet-name>AddProduct</servlet-name>
-        <servlet-class>Shop.com.AddProduct</servlet-class>
+        <servlet-name>dispatcherServlet</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>/WEB-INF/dispatcher-servlet.xml</param-value>
+        </init-param>
+        <load-on-startup>2</load-on-startup>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>AddProduct</servlet-name>
-        <url-pattern>/AddProduct</url-pattern>
+        <servlet-name>dispatcherServlet</servlet-name>
+        <url-pattern>/</url-pattern>
     </servlet-mapping>
 
 
-    <servlet>
-        <servlet-name>DeleteProduct</servlet-name>
-        <servlet-class>Shop.com.DeleteProduct</servlet-class>
-    </servlet>
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>classpath:applicationContext.xml</param-value>
+    </context-param>
 
-    <servlet-mapping>
-        <servlet-name>DeleteProduct</servlet-name>
-        <url-pattern>/DeleteProduct</url-pattern>
-    </servlet-mapping>
-
-
-    <servlet>
-        <servlet-name>ChangeProductAmount</servlet-name>
-        <servlet-class>Shop.com.ChangeProductAmount</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>ChangeProductAmount</servlet-name>
-        <url-pattern>/ChangeProductAmount</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>OrderServlet</servlet-name>
-        <servlet-class>Shop.com.OrderServlet</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>OrderServlet</servlet-name>
-        <url-pattern>/OrderServlet</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>ChangeStatusToOrder</servlet-name>
-        <servlet-class>Shop.com.ChangeStatusToOrder</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>ChangeStatusToOrder</servlet-name>
-        <url-pattern>/ChangeStatusToOrder</url-pattern>
-    </servlet-mapping>
+    <listener>
+        <listener-class>
+            org.springframework.web.context.ContextLoaderListener
+        </listener-class>
+    </listener>
+    <!--/Run core context on init in servlet's container-->
 
 </web-app>

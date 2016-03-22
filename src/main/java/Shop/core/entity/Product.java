@@ -1,15 +1,15 @@
 package Shop.core.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import java.math.BigDecimal;
 
 /**
  * Created by employee on 3/4/16.
  */
-@Entity
+@Entity(name = "products")
 public class Product {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
     private BigDecimal cost;

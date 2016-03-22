@@ -1,14 +1,6 @@
-
-<%@ page import="java.sql.Connection" %>
-<%@ page import="Shop.db.dao.DAOFactory" %>
-<%@ page import="Shop.db.dao.MySQLDAOFactory" %>
-<%@ page import="Shop.core.entity.Category" %>
-<%@ page import="java.util.List" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<% DAOFactory<Connection> factory = new MySQLDAOFactory(); %>
-<%  Connection connection = factory.getContext();%>
-<%   List<Category> categories = factory.getDAO(connection, Category.class).getAll();%>
 
 
 <%@ include file="templates/template_head.jsp"%>
@@ -29,9 +21,9 @@
             <div class="col-md-3">
                 <a href="index.jsp"><p class="lead">Categories</p></a>
                 <div class="list-group">
-                    <% for (Category category: categories) {%>
-                    <a href="categories.jsp?id=<%= category.getId()%>" class="list-group-item"> <%= category.getName() %> </a>
-                    <%}%>
+                    <c:forEach items="${categories}" var="category">
+                    <a href="categories/${category.id}" class="list-group-item">${category.name}</a>
+                    </c:forEach>
                 </div>
             </div>
 
@@ -40,19 +32,21 @@
                     <h2 class="page-header">Categories</h2>
                 </div>
 
-                <% for (Category category: categories) {%>
-                <a href="categories.jsp?id=<%= category.getId() %>">
+                <c:forEach items="${categories}" var="category">
+                <a href="categories/${category.id}">
                     <div class="col-sm-4 col-lg-4 col-md-4">
                         <div class="thumbnail">
                              <img src="http://placehold.it/320x150" alt="">
                             <div class="caption">
-                                <h4 class="text-center"> <%= category.getName()%> </h4>
+                                <h4 class="text-center"> ${category.name} </h4>
                             </div>
                         </div>
                     </div>
                 </a>
-            <% } %>
+                </c:forEach>
             </div>
         </div>
 
 <%@ include file="templates/template_footer.jsp"%>
+
+
